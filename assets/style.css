@@ -90,6 +90,9 @@ header {
 .sm-card p h4 {
   font-weight: 900;
 }
+.sm-card .card-icon {
+  padding-left: 10px;
+}
 .right-bottom-container h3 {
   margin-bottom: 20px;
   font-weight: 800;
