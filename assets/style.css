@@ -1,11 +1,29 @@
 * {
   box-sizing: border-box;
 }
+
+/* header section  */
 header {
   text-align: center;
   background: linear-gradient(to right, #4848d8, #15157e);
   padding: 10px;
   color: white;
+}
+
+.top-container {
+  display: flex;
+}
+
+.top-container .current-condition-container {
+  padding: 25px;
+  width: 100%;
+  margin: 10px;
+}
+
+.right-top-container {
+  border: 2px solid black;
+  padding: 20px;
+  margin-bottom: 20px;
 }
 
 .form-container {
@@ -16,9 +34,11 @@ header {
   border-bottom: 1px solid black;
   margin: 10px;
 }
+
 .form-container label {
   font-weight: 800;
 }
+
 .form-container .city-name {
   padding: 10px;
   margin: 10px 0;
@@ -30,4 +50,19 @@ header {
   border: none;
   font-size: 1.3rem;
   border-radius: 10px;
+}
+
+.saved-city-btn {
+  list-style: none;
+  padding: 10px;
+  border: none;
+  font-size: 1.3rem;
+}
+.saved-city-btn button {
+  width: 100%;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: rgb(160, 156, 156);
+  border: none;
+  font-weight: 600;
 }

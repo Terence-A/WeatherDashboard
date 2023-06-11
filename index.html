@@ -14,26 +14,43 @@
     <title>Weather Dashboard</title>
   </head>
   <body>
+    <header>
+      <h1 class="h1">Weather Dashboard</h1>
+    </header>
     <main class="main-container">
-      <header>
-        <h1 class="h1">Weather Dashboard</h1>
-      </header>
-
-      <form action="" class="form-container">
-        <label for="cityName" class="h2">Search for a City: </label>
-        <input
-          class="city-name"
-          type="text"
-          id="cityName"
-          name="cityName"
-          placeholder="Enter City Name"
-        />
-        <input
-          type="submit"
-          value="Search"
-          class="btn btn-primary submit-btn"
-        />
-      </form>
+      <section class="top-container">
+        <div class="search-form-container">
+          <form action="" class="form-container">
+            <label for="cityName" class="h2">Search for a City: </label>
+            <input
+              class="city-name"
+              type="text"
+              id="cityName"
+              name="cityName"
+              placeholder="Enter City Name"
+            />
+            <input
+              type="submit"
+              value="Search"
+              class="btn btn-primary submit-btn"
+            />
+          </form>
+          <ul class="saved-city-btn" id="saved-city-btn">
+            <li><button>placeholder</button></li>
+          </ul>
+        </div>
+        <div class="current-condition-container">
+          <div class="right-top-container">
+            <h2 class="h1">City Name</h2>
+            <p class="h3">Temp:</p>
+            <p class="h3">Wind:</p>
+            <p class="h3">Humidity:</p>
+          </div>
+          <div class="right-bottom-container">
+            <h3 class="h2">5-Day Forecast:</h3>
+          </div>
+        </div>
+      </section>
     </main>
 
     <script src="./assets/script.js"></script>
