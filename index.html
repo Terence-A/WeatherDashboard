@@ -23,7 +23,7 @@
     </header>
     <main class="main-container">
       <section class="top-container">
-        <div class="search-form-container">
+        <div id="search-form-container">
           <form action="" class="form-container">
             <label for="cityName" class="h2">Search for a City: </label>
             <input
@@ -34,6 +34,7 @@
               placeholder="Enter City Name"
             />
             <input
+              id="search-btn"
               type="submit"
               value="Search"
               class="btn btn-primary submit-btn"
@@ -43,12 +44,12 @@
             <li><button>placeholder</button></li>
           </ul>
         </div>
-        <div class="current-condition-container">
+        <div class="current-condition-container" id="right-container">
           <div class="right-top-container">
-            <h2 class="h2">City Name (date)</h2>
-            <p class="h3">Temp:</p>
-            <p class="h3">Wind:</p>
-            <p class="h3">Humidity:</p>
+            <h2 class="h2" id="lg-card-name">City Name (date)</h2>
+            <p class="h3" id="lg-card-temp">Temp:</p>
+            <p class="h3" id="lg-card-wind">Wind:</p>
+            <p class="h3" id="lg-card-humidity">Humidity:</p>
           </div>
 
           <section class="right-bottom-container">
@@ -64,51 +65,51 @@
                 <p class="h5" id="card-1-humidity">Humidity:</p>
               </div>
 
-              <div class="sm-card card-1">
-                <p class="h4" id="card-1-date">current date</p>
+              <div class="sm-card card-2">
+                <p class="h4" id="card-2-date">current date</p>
                 <p class="h4 card-icon" id="card-1-icon">
                   <span class="material-symbols-outlined"> clear_day </span>
                 </p>
-                <p class="h5" id="card-1-temp">Temp:</p>
-                <p class="h5" id="card-1-wind">Wind:</p>
-                <p class="h5" id="card-1-humidity">Humidity:</p>
+                <p class="h5" id="card-2-temp">Temp:</p>
+                <p class="h5" id="card-2-wind">Wind:</p>
+                <p class="h5" id="card-2-humidity">Humidity:</p>
               </div>
 
-              <div class="sm-card card-1">
-                <p class="h4" id="card-1-date">current date</p>
+              <div class="sm-card card-3">
+                <p class="h4" id="card-3-date">current date</p>
                 <p class="h4 card-icon" id="card-1-icon">
                   <span class="material-symbols-outlined"> clear_day </span>
                 </p>
-                <p class="h5" id="card-1-temp">Temp:</p>
-                <p class="h5" id="card-1-wind">Wind:</p>
-                <p class="h5" id="card-1-humidity">Humidity:</p>
+                <p class="h5" id="card-3-temp">Temp:</p>
+                <p class="h5" id="card-3-wind">Wind:</p>
+                <p class="h5" id="card-3-humidity">Humidity:</p>
               </div>
 
-              <div class="sm-card card-1">
-                <p class="h4" id="card-1-date">current date</p>
+              <div class="sm-card card-4">
+                <p class="h4" id="card-4-date">current date</p>
                 <p class="h4 card-icon" id="card-1-icon">
                   <span class="material-symbols-outlined"> clear_day </span>
                 </p>
-                <p class="h5" id="card-1-temp">Temp:</p>
-                <p class="h5" id="card-1-wind">Wind:</p>
-                <p class="h5" id="card-1-humidity">Humidity:</p>
+                <p class="h5" id="card-4-temp">Temp:</p>
+                <p class="h5" id="card-4-wind">Wind:</p>
+                <p class="h5" id="card-4-humidity">Humidity:</p>
               </div>
 
-              <div class="sm-card card-1">
-                <p class="h4" id="card-1-date">current date</p>
+              <div class="sm-card card-5">
+                <p class="h4" id="card-5-date">current date</p>
                 <p class="h4 card-icon" id="card-1-icon">
                   <span class="material-symbols-outlined"> clear_day </span>
                 </p>
-                <p class="h5" id="card-1-temp">Temp:</p>
-                <p class="h5" id="card-1-wind">Wind:</p>
-                <p class="h5" id="card-1-humidity">Humidity:</p>
+                <p class="h5" id="card-5-temp">Temp:</p>
+                <p class="h5" id="card-5-wind">Wind:</p>
+                <p class="h5" id="card-5-humidity">Humidity:</p>
               </div>
             </div>
           </section>
         </div>
       </section>
     </main>
-
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
     <script src="./assets/script.js"></script>
   </body>
 </html>
