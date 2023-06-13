@@ -77,6 +77,8 @@ header {
 .sm-card-container {
   display: flex;
   justify-content: space-between;
+  margin: 20px 20px 20px 0;
+  min-width: 195px;
   flex-wrap: wrap;
 }
 .sm-card {
@@ -100,4 +102,71 @@ header {
 }
 .hide {
   display: none;
+}
+@media only screen and (max-width: 1530px) {
+  .sm-card-container {
+    flex-direction: column;
+    height: 600px;
+  }
+  .sm-card {
+    margin: 20px;
+    max-width: 195px;
+  }
+}
+@media only screen and (max-width: 1168px) {
+  .sm-card-container {
+    height: 100%;
+  }
+  .sm-card {
+    margin: 10px;
+  }
+  .form-container {
+    width: 200px;
+  }
+}
+@media only screen and (max-width: 645px) {
+  .h2 {
+    font-size: 1.3rem;
+  }
+  .h3 {
+    font-size: 1rem;
+  }
+  .h4 {
+    font-size: 1.2rem;
+  }
+  .h5 {
+    font-size: 1rem;
+  }
+  .form-container .submit-btn {
+    font-size: 1rem;
+  }
+  button {
+    font-size: 1rem;
+  }
+  .form-container .city-name {
+    font-size: 1rem;
+  }
+}
+@media only screen and (max-width: 555px) {
+  .main-container .top-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .saved-city-btn button {
+    width: 200px;
+  }
+  .right-top-container {
+    width: 225px;
+    margin: 0 auto 20px;
+  }
+  .right-bottom-container h3 {
+    text-align: center;
+  }
+  .sm-card-container {
+    align-items: center;
+  }
+  .h1 {
+    font-size: 1.7rem;
+  }
 }
