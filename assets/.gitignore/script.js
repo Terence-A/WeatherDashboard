@@ -70,7 +70,9 @@ searchBtn.addEventListener("click", (e) => {
               10
             )}</p>
             <p class="h4 card-icon" id="card-1-icon">
-              <span class="material-symbols-outlined"> clear_day </span>
+              <span class="material-symbols-outlined"> ${
+                fivedaydata.list[i].weather[0].icon
+              } </span>
             </p>
             <p class="h6" id="card-1-temp">Temp: ${
               fivedaydata.list[i].main.temp
@@ -80,7 +82,7 @@ searchBtn.addEventListener("click", (e) => {
             } KPH</p>
             <p class="h6" id="card-1-humidity">Humidity: ${
               fivedaydata.list[i].main.humidity
-            }</p>`;
+            } %</p>`;
             smCardContainer.appendChild(divEl);
           }
         });
