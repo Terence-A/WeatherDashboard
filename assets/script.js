@@ -17,6 +17,7 @@ const smCardContainer = document.querySelector(".sm-card-container");
 let currentDay = dayjs().format("M/D/YYYY");
 // let city = "";
 let queryURL = "http://api.openweathermap.org/data/2.5/weather?q=";
+// let weatherIcon = `https://openweathermap.org/img/wn/${currentStats.weather[0].icon}@2x.png`;
 
 // queryURL = `${queryURL}${city}&appid=${APIKey}`;
 
@@ -32,21 +33,29 @@ searchBtn.addEventListener("click", (e) => {
   e.preventDefault();
 
   let city = cityName.value;
-  queryURL = `${queryURL}${city}&units=metric&appid=${APIKey}`;
+  let queryURL1 = `${queryURL}${city}&units=metric&appid=${APIKey}`;
   rightContainer.classList.remove("hide");
   console.log(city);
 
-  fetch(queryURL)
+  fetch(queryURL1)
     .then((resolve) => {
       return resolve.json();
     })
     .then((data) => {
       console.log(data.coord);
       console.log(data);
-      lgCardName.textContent = `${cityName.value} ${currentDay} ${data.weather[0].icon}`;
-      lgCardTemp.textContent += ` ${data.main.temp} °C`;
-      lgCardWind.textContent += ` ${data.wind.speed} KPH`;
-      lgCardHumidity.textContent += ` ${data.main.humidity} %`;
+
+      let currentDayWeather = JSON.stringify(data);
+      localStorage.setItem("currentStats", currentDayWeather);
+      let currentStats = JSON.parse(localStorage.getItem("currentStats"));
+      console.log(currentStats);
+      let iconImg = document.createElement("img");
+      iconImg.src = `https://openweathermap.org/img/wn/${currentStats.weather[0].icon}@2x.png`;
+      lgCardName.textContent = `${cityName.value} ${currentDay}`;
+      lgCardName.append(iconImg);
+      lgCardTemp.textContent = `Temp: ${currentStats.main.temp} °C`;
+      lgCardWind.textContent = `Speed: ${currentStats.wind.speed} KPH`;
+      lgCardHumidity.textContent = `Humidity: ${currentStats.main.humidity} %`;
       // card1date.textContent = `${currentDay}`;
 
       let lat = data.coord.lat;
@@ -59,31 +68,41 @@ searchBtn.addEventListener("click", (e) => {
           return resolve.json();
         })
         .then((fivedaydata) => {
-          console.log(fivedaydata);
-          for (let i = 7; i < fivedaydata.list.length; i += 7) {
+          let weatherData = JSON.stringify(fivedaydata);
+          localStorage.setItem("weatherStats", weatherData);
+          let weatherStats = JSON.parse(localStorage.getItem("weatherStats"));
+          console.log(weatherStats);
+
+          for (let i = 7; i < fivedaydata.list.length; i += 8) {
             let divEl = document.createElement("div");
+            const cardIcon = document.querySelector(".card-icon");
             divEl.classList.add("sm-card");
             divEl.innerHTML = `
-            <p class="h4" id="card-7-date">${fivedaydata.list[i].dt_txt.slice(
+            <p class="h5" id="card-7-date">${weatherStats.list[i].dt_txt.slice(
               0,
               10
             )}</p>
-            <p class="h4 card-icon" id="card-1-icon">
-              <span class="material-symbols-outlined"> ${
-                fivedaydata.list[i].weather[0].icon
-              } </span>
+            <p class="h5 card-icon" id="card-1-icon">
+              <span class="material-symbols-outlined"> 
+               <img src = "https://openweathermap.org/img/wn/${
+                 weatherStats.list[i].weather[0].icon
+               }@2x.png" >
+               </span>
             </p>
             <p class="h6" id="card-1-temp">Temp: ${
-              fivedaydata.list[i].main.temp
+              weatherStats.list[i].main.temp
             } °C</p>
             <p class="h6" id="card-1-wind">Wind: ${
-              fivedaydata.list[i].wind.speed
+              weatherStats.list[i].wind.speed
             } KPH</p>
             <p class="h6" id="card-1-humidity">Humidity: ${
-              fivedaydata.list[i].main.humidity
+              weatherStats.list[i].main.humidity
             } %</p>`;
             smCardContainer.appendChild(divEl);
           }
+        })
+        .catch((error) => {
+          console.log("error", error);
         });
     });
 
