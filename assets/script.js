@@ -15,14 +15,9 @@ const card5date = document.querySelector("#card-35-date");
 let smCardDates = [card1date, card2date, card3date, card4date, card5date];
 const smCardContainer = document.querySelector(".sm-card-container");
 let currentDay = dayjs().format("M/D/YYYY");
+let divEl = "";
 // let city = "";
 let queryURL = "http://api.openweathermap.org/data/2.5/weather?q=";
-// let weatherIcon = `https://openweathermap.org/img/wn/${currentStats.weather[0].icon}@2x.png`;
-
-// queryURL = `${queryURL}${city}&appid=${APIKey}`;
-
-// console.log(queryURL);
-// console.log(city);
 
 rightContainer.classList.add("hide");
 
@@ -56,7 +51,6 @@ searchBtn.addEventListener("click", (e) => {
       lgCardTemp.textContent = `Temp: ${currentStats.main.temp} °C`;
       lgCardWind.textContent = `Speed: ${currentStats.wind.speed} KPH`;
       lgCardHumidity.textContent = `Humidity: ${currentStats.main.humidity} %`;
-      // card1date.textContent = `${currentDay}`;
 
       let lat = data.coord.lat;
       let lon = data.coord.lon;
@@ -67,16 +61,20 @@ searchBtn.addEventListener("click", (e) => {
         .then((resolve) => {
           return resolve.json();
         })
+
         .then((fivedaydata) => {
           let weatherData = JSON.stringify(fivedaydata);
           localStorage.setItem("weatherStats", weatherData);
           let weatherStats = JSON.parse(localStorage.getItem("weatherStats"));
           console.log(weatherStats);
 
-          for (let i = 7; i < fivedaydata.list.length; i += 8) {
-            let divEl = document.createElement("div");
-            const cardIcon = document.querySelector(".card-icon");
+          while (smCardContainer.firstChild) {
+            smCardContainer.removeChild(smCardContainer.lastChild);
+          }
+          for (let i = 7; i < weatherStats.list.length; i += 8) {
+            divEl = document.createElement("div");
             divEl.classList.add("sm-card");
+
             divEl.innerHTML = `
             <p class="h5" id="card-7-date">${weatherStats.list[i].dt_txt.slice(
               0,
@@ -105,11 +103,4 @@ searchBtn.addEventListener("click", (e) => {
           console.log("error", error);
         });
     });
-
-  // console.log(fivedaydata, "5 day data"));
-
-  // 5 day forecaset
-  // for (let i = 0; i < smCardDates.length; i++)
-  //   smCardDates.textContent[i] = fivedaydata.list[i].dt_txt;
-  // card1date.textContent = fivedaydata.list;
 });
