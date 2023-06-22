@@ -7,27 +7,45 @@ const cityName = document.querySelector("input");
 const lgCardTemp = document.querySelector("#lg-card-temp");
 const lgCardWind = document.querySelector("#lg-card-wind");
 const lgCardHumidity = document.querySelector("#lg-card-humidity");
-const card1date = document.querySelector("#card-7-date");
-const card2date = document.querySelector("#card-14-date");
-const card3date = document.querySelector("#card-21-date");
-const card4date = document.querySelector("#card-28-date");
-const card5date = document.querySelector("#card-35-date");
-let smCardDates = [card1date, card2date, card3date, card4date, card5date];
 const smCardContainer = document.querySelector(".sm-card-container");
+const savedCityBtn = document.querySelector("#saved-city-btn");
+
 let currentDay = dayjs().format("M/D/YYYY");
+let cityArr = [];
 let divEl = "";
 // let city = "";
 let queryURL = "http://api.openweathermap.org/data/2.5/weather?q=";
 
 rightContainer.classList.add("hide");
 
-// $("#card-5-temp").text(`Temp: Hot`);
-
 // search button
 searchBtn.addEventListener("click", (e) => {
   e.preventDefault();
 
   let city = cityName.value;
+  if (!city) {
+    return;
+  }
+  cityArr.push(city);
+  console.log(cityArr);
+  if (cityArr.lenth === 0) {
+    return;
+  } else {
+    // for (i = 0; i < cityArr.length; i++) {
+    let newLi = document.createElement("li");
+    newLi.classList.add("saved-city-btn");
+    let btn = document.createElement("button");
+    btn.classList.add("saved-city-btn");
+    btn.innerText = city;
+    newLi.append(btn);
+
+    // btn.innerHTML = cityArr[i];
+
+    savedCityBtn.appendChild(newLi);
+    // }
+  }
+
+  //declair endpoint
   let queryURL1 = `${queryURL}${city}&units=metric&appid=${APIKey}`;
   rightContainer.classList.remove("hide");
   console.log(city);
