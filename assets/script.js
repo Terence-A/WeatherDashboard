@@ -12,6 +12,9 @@ let currentDay = dayjs().format("YYYY/M/D/");
 let cityArr = [];
 let divEl = "";
 
+// api key
+const APIKey = "6044189ddce27455149e9c7b8ffa95a3";
+
 // endpoint
 let queryURL = "http://api.openweathermap.org/data/2.5/weather?q=";
 
