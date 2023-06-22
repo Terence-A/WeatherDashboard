@@ -114,6 +114,7 @@ searchBtn.addEventListener("click", (e) => {
     });
 });
 
+// saved cities search button
 savedCityBtn.addEventListener("click", function (e) {
   city = e.target.textContent;
 
