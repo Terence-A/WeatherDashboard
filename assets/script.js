@@ -11,6 +11,7 @@ const savedCityBtn = document.querySelector(".saved-city-btn");
 let currentDay = dayjs().format("YYYY/M/D/");
 let cityArr = [];
 let divEl = "";
+
 // endpoint
 let queryURL = "http://api.openweathermap.org/data/2.5/weather?q=";
 
@@ -32,7 +33,6 @@ searchBtn.addEventListener("click", (e) => {
   } else {
     cityArr.push(city);
     localStorage.setItem("savedCities", JSON.stringify(cityArr));
-    console.log(cityArr);
     let newLi = document.createElement("li");
     newLi.classList.add("saved-city-btn");
     let btn = document.createElement("button");
@@ -45,20 +45,15 @@ searchBtn.addEventListener("click", (e) => {
   //declair endpoint
   let queryURL1 = `${queryURL}${city}&units=metric&appid=${APIKey}`;
   rightContainer.classList.remove("hide");
-  console.log(city);
 
   fetch(queryURL1)
     .then((resolve) => {
       return resolve.json();
     })
     .then((data) => {
-      console.log(data.coord);
-      console.log(data);
-
       let currentDayWeather = JSON.stringify(data);
       localStorage.setItem("currentStats", currentDayWeather);
       let currentStats = JSON.parse(localStorage.getItem("currentStats"));
-      console.log(currentStats);
       let iconImg = document.createElement("img");
       iconImg.src = `https://openweathermap.org/img/wn/${currentStats.weather[0].icon}@2x.png`;
       lgCardName.textContent = `${cityName.value} ${currentDay}`;
@@ -81,7 +76,6 @@ searchBtn.addEventListener("click", (e) => {
           let weatherData = JSON.stringify(fivedaydata);
           localStorage.setItem("weatherStats", weatherData);
           let weatherStats = JSON.parse(localStorage.getItem("weatherStats"));
-          console.log(weatherStats);
 
           while (smCardContainer.firstChild) {
             smCardContainer.removeChild(smCardContainer.lastChild);
@@ -125,20 +119,15 @@ savedCityBtn.addEventListener("click", function (e) {
 
   let queryURL1 = `${queryURL}${city}&units=metric&appid=${APIKey}`;
   rightContainer.classList.remove("hide");
-  console.log(city);
 
   fetch(queryURL1)
     .then((resolve) => {
       return resolve.json();
     })
     .then((data) => {
-      console.log(data.coord);
-      console.log(data);
-
       let currentDayWeather = JSON.stringify(data);
       localStorage.setItem("currentStats", currentDayWeather);
       let currentStats = JSON.parse(localStorage.getItem("currentStats"));
-      console.log(currentStats);
       let iconImg = document.createElement("img");
       iconImg.src = `https://openweathermap.org/img/wn/${currentStats.weather[0].icon}@2x.png`;
       lgCardName.textContent = `${city} ${currentDay}`;
@@ -161,7 +150,6 @@ savedCityBtn.addEventListener("click", function (e) {
           let weatherData = JSON.stringify(fivedaydata);
           localStorage.setItem("weatherStats", weatherData);
           let weatherStats = JSON.parse(localStorage.getItem("weatherStats"));
-          console.log(weatherStats);
 
           while (smCardContainer.firstChild) {
             smCardContainer.removeChild(smCardContainer.lastChild);
